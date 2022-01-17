@@ -5,7 +5,7 @@ export const SET_IS_SIGN_UP_SUCCESS = "SET_IS_SIGN_UP_SUCCESS";
 export const SET_USER_LOGOUT = "SET_USER_LOGOUT";
 
 const initialState = {
-   isLogin: false,
+   isLogin: true,
    token: null,
    user: null,
 };
