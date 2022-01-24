@@ -11,7 +11,7 @@ const HomeBottomNavigation = () => {
 
    return (
       <BottomNavigation
-         className="fixed bottom-0 right-0 left-0 border-t"
+         className="fixed bottom-0 right-0 left-0 border-t z-50"
          showLabels
          value={value}
          onChange={(event, newValue) => {

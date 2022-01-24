@@ -11,6 +11,7 @@ import Spinner from "components/Spinner/Spinner";
 
 import { validEmailRegex } from "utils/Regex";
 import { postLoginApi } from "requests/account";
+import { signInWithGoogle } from "utils/firebase";
 
 const Login = (props) => {
    const [loginDetails, setLoginDetails] = useState({
@@ -61,6 +62,15 @@ const Login = (props) => {
       } else {
          toast.error(result.message);
       }
+   };
+
+   const handleLoginWithGoogle = async () => {
+      setIsLoading(true);
+      const result = await props.signInWithGoogle();
+      if (result.error) {
+         toast.error(result.message);
+      }
+      setIsLoading(false);
    };
 
    if (isLoading) {
@@ -118,7 +128,10 @@ const Login = (props) => {
                >
                   Sign in
                </button>
-               <button className="flex justify-center py-2 space-x-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+               <button
+                  onClick={handleLoginWithGoogle}
+                  className="flex justify-center py-2 space-x-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+               >
                   <img className="w-6 h-6" src={googleIcon} alt="" />
                   <span className="font-medium">Sign in with Google</span>
                </button>
@@ -139,10 +152,12 @@ const Login = (props) => {
 
 Login.propTypes = {
    postLoginApi: PropTypes.func,
+   signInWithGoogle: PropTypes.func,
 };
 
 const mapDispatchToProps = {
    postLoginApi,
+   signInWithGoogle,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

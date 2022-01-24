@@ -6,7 +6,13 @@ import {
    SET_IS_UPLOAD_FILE,
    RESET_FILE_MANAGER_STATE,
    SET_UPLOAD_FILE_CANCEL_TOKEN,
+   SET_IS_LOADING,
 } from "../reducers/fileManager";
+
+export const setIsLoading = (flag) => ({
+   type: SET_IS_LOADING,
+   payload: flag,
+});
 
 export const setIsOpenUploadFileDialog = () => ({
    type: SET_IS_OPEN_UPLOAD_FILE_DIALOG,

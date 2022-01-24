@@ -16,6 +16,7 @@ const Document = lazy(() => import("pages/DocumentPage/DocumentPage"));
 const Audio = lazy(() => import("pages/AudioPage/AudioPage"));
 const MyProfile = lazy(() => import("pages/Profile"));
 const FileUpload = lazy(() => import("pages/FileUpload"));
+const FolderDetails = lazy(() => import("pages/FolderDetails/FolderDetails"));
 
 class Main extends Component {
    render() {
@@ -30,6 +31,7 @@ class Main extends Component {
                   <Route path="/audio" component={Audio} />
                   <Route path="/profile" component={MyProfile} />
                   <Route path="/upload" component={FileUpload} />
+                  <Route path="/folder/:folderName" component={FolderDetails} />
                   <Route exact="/" component={Home} />
                   <Redirect from="/" to="/" />
                </Switch>

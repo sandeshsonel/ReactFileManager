@@ -1,3 +1,4 @@
+export const SET_IS_LOADING = "SET_IS_LOADING";
 export const SET_IS_OPEN_UPLOAD_FILE_DIALOG = "SET_IS_OPEN_UPLOAD_FILE_DIALOG";
 export const ADD_UPLOAD_FILE = "ADD_UPLOAD_FILE";
 export const SET_UPLOAD_FILE_PROGRESS = "SET_UPLOAD_FILE_PROGRESS";
@@ -7,12 +8,18 @@ export const RESET_FILE_MANAGER_STATE = "RESET_FILE_MANAGER_STATE";
 export const SET_UPLOAD_FILE_CANCEL_TOKEN = "SET_UPLOAD_FILE_CANCEL_TOKEN";
 
 const initialState = {
+   isLoading: false,
    isOpenUploadFileDialog: false,
    uploadFiles: [],
 };
 
 const fileManagerReducer = (state = initialState, action) => {
    switch (action.type) {
+      case SET_IS_LOADING:
+         return {
+            ...state,
+            isLoading: action.payload,
+         };
       case SET_IS_OPEN_UPLOAD_FILE_DIALOG:
          return {
             ...state,

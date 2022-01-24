@@ -1,5 +1,5 @@
 import axiosInstance from "utils/axiosInstance";
-import { loginUrl, signUpUrl } from "../config";
+import { loginUrl, loginWithFirebaseUrl, signUpUrl } from "../config";
 import { setIsLogin, setIsSignUp } from "store/actions/account";
 
 export const postLoginApi = (loginDetails) => async (dispatch) => {
@@ -26,6 +26,24 @@ export const postLoginApi = (loginDetails) => async (dispatch) => {
             message: error.message,
          };
       }
+   }
+};
+
+export const loginWithFirebaseApi = async (userDetails) => {
+   try {
+      const response = await axiosInstance.post(
+         loginWithFirebaseUrl,
+         userDetails,
+      );
+      return {
+         error: false,
+         data: response.data.data,
+      };
+   } catch (error) {
+      return {
+         error: true,
+         message: error.response.message,
+      };
    }
 };
 

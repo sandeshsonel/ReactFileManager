@@ -16,15 +16,15 @@ const middleware = [thunk, logger];
 // }
 
 export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(...middleware))
+   rootReducer,
+   composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 export const persistor = persistStore(store);
 
 const storeValue = {
-  store,
-  persistor,
+   store,
+   persistor,
 };
 
 export default storeValue;
